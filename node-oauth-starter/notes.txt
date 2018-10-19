@@ -1,0 +1,1193 @@
+﻿1) Will need to install Node and NPM.
+
+2) Will need to install MongoDB Server to run locally.
+
+	https://www.mongodb.com/download-center/community
+
+	Add to PATH / Environment
+
+3) Will need to configure Google OpenID ( Login )
+
+	https://console.developers.google.com/apis/credentials/oauthclient?project=projectme-141817&folder&organizationId
+
+	2a) And set in configuration.
+
+4) Install node dependencies
+
+	>npm install
+
+5) Run the Mongo Database Server
+
+	>mongod --dbpath=db
+
+6) Run the Application
+	
+	>npm start
+
+	Or, Select "Launch Server" from within Visual Studio Code.
+
+
+
+Secure and Account will only be displayed if you have authenticated.
+
+Account will display your Google Account.
+
+Secure is a secure page on which you can host your application; Currently it hosts some simple CRUD operations against the MongoDb database.
+
+
+
+
+
+
+Technologies
+============
+
+	Node.JS, Express, Heroku, Handlebars, Sass, NPM, REST, SPA, Visual Studio Code, Google Sign-In, OAuth
+
+Requirements
+============
+
+	I want to create a journaling app where I can post dated entries and photos. 
+	
+		Later I would like to include maps with pins and linking hashtags.
+
+	I want the API to be accessible through native mobiles devices as well as through a web page.
+
+	I want to store the data externally in a readable format. I want the user to own their own data.
+
+	I want to be able to share my posts with my friends.
+
+Links
+=====
+
+	Angualr CLI
+	https://cli.angular.io/
+
+	Getting started with Heroku
+	https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction
+
+	Accessing a Heroku Database remotely
+	https://devcenter.heroku.com/articles/connecting-to-heroku-postgres-databases-from-outside-of-heroku
+
+	Google Sign-In (OAuth) 
+	https://developers.google.com/identity/sign-in/web/sign-in
+	https://developers.google.com/identity/
+
+	Google API Console (to generate keys)
+	https://console.developers.google.com/projectselector/apis/library
+
+	Google Drive API v3 w/ Node.JS 
+	https://github.com/google/google-api-nodejs-client/#generating-an-authentication-url
+	https://developers.google.com/drive/v3/web/quickstart/nodejs
+	    	
+	Google Drive API v3 ( File Properties; Stuff that can be fetched ).
+	https://developers.google.com/drive/v3/reference/files   
+	
+	Google Drive API v3 ( Searching Files )
+	https://developers.google.com/drive/v3/web/search-parameters 
+	https://stackoverflow.com/questions/39274581/google-drive-api-node-js-search-files-in-specific-location
+	https://stackoverflow.com/questions/41741520/how-do-i-search-sub-folders-and-sub-sub-folders-in-google-drive    			
+
+	Step-by-step Google Sign-In
+	https://developers.google.com/+/web/samples/javascript
+
+	Debugging an Express Application in Visual Studio Code
+	https://code.visualstudio.com/docs/nodejs/nodejs-tutorial
+	
+	Service Layer Authentication 
+	https://stackoverflow.com/questions/319530/restful-authentication
+
+	Node + Express + Passport
+	https://stackoverflow.com/questions/22052258/what-does-passport-session-middleware-do
+	https://github.com/barberboy/passport-google-oauth2-example/blob/master/app.js
+
+	multer - Node.js middleware for handling `multipart/form-data`.
+	https://github.com/expressjs/multer
+
+	Uploading media to Google Drive
+	https://github.com/google/google-api-nodejs-client/#media-uploads	
+
+	Google Drive Access Scopes
+	https://developers.google.com/drive/v3/web/about-auth
+		
+	Google Drive API -  GET file test <form>
+	https://developers.google.com/drive/v3/reference/files/get
+	 
+	Google Drive API - Get Files using Node
+	https://developers.google.com/drive/v3/web/manage-downloads		
+
+	How to write a file to Express router response.
+	https://stackoverflow.com/questions/10046039/nodejs-send-file-in-response/10047018#10047018
+
+	Node - Creating a Module
+	https://stackoverflow.com/questions/12469723/exporting-objects-with-the-exports-object
+
+	Injecting Depencies into Route Files
+	https://stackoverflow.com/questions/42295987/route-separation-in-express-routing-with-passing-passport-instance
+	
+	MongoDB - Quickstart
+	http://mongodb.github.io/node-mongodb-native/2.2/quick-start/quick-start/
+	
+	MongoDB - Getting Started w/ Node.JS 
+	https://docs.mongodb.com/getting-started/node/introduction/
+		
+	Angular - Integrating Google Sign-In
+	https://stackoverflow.com/questions/38846232/how-to-implement-signin-with-google-in-angular-2-using-typescript
+	https://developers.google.com/drive/v3/web/quickstart/js
+	( Google User Object )
+	https://developers.google.com/identity/sign-in/web/reference#googleusergetid
+	( Google WebAPI Reference )
+	https://developers.google.com/identity/sign-in/web/reference
+	
+	
+	Angular - Securing Routes	
+	https://angular.io/guide/router#guards
+	
+	
+	
+Use Cases
+=========
+
+	Authentication and Authorization
+	--------------------------------
+
+		Visitor visits "unprotected" home page w/ Google Sign-In Button.			
+			Visitor clicks "Sign On" button. 
+				OAuth Token Generated; User redirected to "protected" application.
+				
+		Visitor visits a "protected" application page.
+			Application checks for OAuth Token and verifies.
+				Application returns appropriate page or, redirects the visitor to the "unprotected" home page.
+				
+		
+		"Something" makes a request against the Service Layer (REST API).
+			Service checks for OAuth Token and verifies.
+				Services returns requested data to client or, an HTTP error 401 (Unauthorized).
+					
+					
+Project Setup / Starters
+========================
+
+	For Small projects
+	
+		Node.js will serve both Angualr static files and act as a Web API.				
+
+	For BIG projects 
+
+		- It is now common to separate the web application into two projects
+
+		Server-side - in this case Node.js
+		Client-side - Apache will serve up Angular .html and related javascript.
+		
+		- Why this is good: 
+		
+			Good for bigger teams
+		
+			Web API is independent and not tied to a particular client.
+		
+			Frees up Node to just handling data requests - no longer serves pages ( which can now be done by Apache ).
+			
+	Angular CLI
+	
+		Can be used transpile/build and serve to a web server ( if so desired ).
+	
+	Mean.IO
+					
+
+Hosting
+=======
+
+	*** Pick : Heroku
+
+	Using Heroku for hosting as it is free ... for now.
+		
+	Heroku runs apps in a container called a dyno.
+		
+	Free accounts = 1 dyno; sleeps after 30 minutes.
+		
+	To run an app Heroku clones your git rep and deploys it as an app on its cloud
+		
+	A profile can be specified for an app to granularly declare startup procedures and background processes. A dyno runs/initiaized by a procfile.
+		
+	Heroku recognizes a Node app by its package.json. Will automatically run "npm install" command to install dependencies.
+		
+	Heroku provies a bunch of add-ons ( for example, logging ) that can be plugged in.
+		
+	Has a REPL ( Read-Eval-Print-Loop) shell for running commands against the dyno/container; good for experimenting in app environment.
+
+	.env file in root is read by Heroku dyno upon startup; it's where you put configuration stuff.		
+		
+			
+	Heroku CLI (Command Line Interface) ...
+	-----------------------------------
+		
+		Start by logging in ....
+		
+			heroku login								
+						
+		The following should be done from your git repo folder ....
+				
+			These target the cloud ...
+				
+				git push heroku master 										
+				-- pushes your repository to the application on heroku cloud.			
+
+				heroku create | heroku apps:create my_app_name		
+				-- creates an application on heroku cloud			
+
+				heroku open
+				- run the app in a browser.
+
+				heroku config													
+				-- view configuration info
+
+				heroku config:set <env_var>=<value>
+				-- Set a config var.
+
+				heroku logs --tail
+				-- view logs.
+
+				heroku ps			
+				-- view running processes or, heroku dynos.
+
+				heroku ps -a <app name>										
+				-- amount of hours left before dyno (free) expires
+
+				heroku run [node|bash|<process>]							
+				-- runs process/app in dyno for experimenting in app environment
+
+				heroku addons:create heroku-postgresql:hobby-dev	
+				-- create a database
+				-- sets a DATABASE_URL in .env
+				
+			These target your local ....
+				
+				heroku local												
+				-- run your app locally; requires that npm install is run beforehand.
+				-- runs on http://localhost:5000		
+																			
+Authentication
+==============
+
+	*** Pick : Google Sign-In and/or Passport.JS
+	
+	Options
+	-------
+	1) Heroku has API's for rolling your own OAuth authentication.
+	2) Can use Basic Authentication and resubmit the username and password for every request.
+	3) Can use Google Sign-In API where you leverage a user's Google account and allow Google to handle all of the authentication.
+
+	Pros and Cons
+	-------------
+	1) All options require SSL.	
+	2) If I roll my own authentication I am responsible for securing the credential store as well as protecting the OAuth token from hacking (Cross-Site-Forgery).
+	3) If I use Basic Authentication I need to resubmit the credentials for every request and revalidate against the database. This is potentially slow.
+	4) If I use Google Sign-In the user must have a Google Account and be willing to authenticate with it.  However, I gain access to the user's Google resources. Google Drive can be used to serve their pictures and their contacts can be used to tag entries.	
+
+REST Service Layer / Web API
+=======================
+
+	A REST service is stateless by definition. 
+
+	There are two common ways to secure your REST API service:
+
+	1) HTTP Basic Authentication
+	
+		This requires SSL. 
+		
+		The user's credentials are stored locally on the client and Base64-encoded. 
+		
+		Each request to the API includes the credentials which are re-evaluated.
+
+		This is the most common strategy.
+		
+	2) Use Session Cookies
+	
+		Possible, but not RESTFUl as Cookies are used to maintain a state. 
+		
+		To submit them to a REST service goes against REST.
+		
+		Cookies are subject to tampering.
+		
+	3) OAuth 2.0 Token
+	
+		Same problems as (2).
+	
+	4) Restrict IP Address
+	
+		Only allow certain IP addresses to have access to the service. This wowkr for server-to-server mostly.
+	
+	Also, use SSL.
+	
+State Management
+================
+	
+	If Single Page Application (SPA), do you need a session/state cookie? I'm thinking "no". Here's why :
+	
+		1) The state is maintained entirely on the client. 
+	
+		2) The Service Layer is RESTFul. Any request against it would have to be stateless. 	
+
+	_Wrong_. Passport.JS / Authentication DOES requires a Cookie. Authentication is performed on the server. A session/cookie is generated upon successful 
+	authentication. The session/cookie maps to the OAuth Token which is kept on the server.
+	
+Creating the Application
+========================
+
+	I need to get a web server running to test Google Sign locally. After that I will deploy to Heroku.
+
+	I will use Node, Express (web server), Sass (Css pre-compiler), and Handlebars (templating engine) since it is what I am familiar with. I don't expect to use much Handlebars however, as this will be a single page application.
+
+	Express has a cool generator that makes this very easy. 
+
+	# Install the generator.
+	C:\npm install express-generator -g
+
+	# Create the web application.
+	C:\express --view=hbs -css=sass --git webapp
+	
+Running the Application Locally ( in Visual Studio Code )
+===============================
+
+	*** Pick : Visual Studio Code
+
+	I had to modify launch.json to set up debugging in Visual Studio Code. Also, Express is hard-coded to port 3000 so, you will need to go to http://localhost:3000 when running.
+
+		
+Running the Application Remotely ( on Heroku )
+===============================
+
+		# Login to Heroku through Heroku CLI
+		heroku login
+		# Navigate to the Git repository.
+		cd Me-Too
+		heroku create
+		# Create an application on the Heroku Cloud.
+		heroku git:remote - a fathomless-oasis-40818
+		# This fixes a credential problem whereas Heroku CLI prompts you for a Git logon.
+		set HOME=%USERPROFILE%
+		# Push the repository to heroku.
+		git push heroku master
+		# Start up the Heroku "dyno" ( container ).
+		heroku ps:scale web=1
+		# Run the application on the Heroku Cloud and open a browser.
+		heroku open
+		
+		As Heroku changes the path to your application every time that it is deployed, need to add the new path to "Authorized Javascript Origins" in Googles API Conssole here :
+		
+			https://console.developers.google.com/apis/credentials?project=projectme-141817
+		
+Using Passport.js w/ Google OAuth 2.0
+=====================================
+
+	This is nice because I can support multiple OAuth vendors. 
+	
+	The example on Passport.js sets up everything according to routes, whereas :
+	
+		/auth/google 		, authenticates.
+		/auth/callback		, is called after successful authentication. I am assuming WITH a token.		
+
+	Need to modify Authorized Javascript origins / Authorized redirect URIs in Google API here :
+	
+		https://console.developers.google.com/apis/credentials/oauthclient/935260364183-kia5b98pvhd29ehqcjdnmltcj18jp5s6.apps.googleusercontent.com?project=935260364183
+		
+	And, it looks like I DO need a session. OAuth is performed on the server. A cookie is used to synch the server with the client.
+
+Using Passport.js w/ Google OAuth 2.0 and Drive API
+===================================================
+
+	This was a little tricky.
+
+	I had to :
+	
+		1) Create a Google oauth2Client object, 
+		2) Seed it w/ the same application, secret, and callback keys as in OAuth, and then 
+		3) Apply the authentication token that was retreived by the Passport.js Google OAuth strategty.
+
+		The oauth2Client object can then be supplied as the "auth" argument to Google API calls.
+
+		You also need to add 'https://www.googleapis.com/auth/drive.metadata.readonly' to the "scope" of the Google Auth strategy. This effectively tells Google that the token 
+		you are generating needs access to Google Drive.
+
+	Some links that helped are :
+
+		https://github.com/google/google-api-nodejs-client/#generating-an-authentication-url
+		https://developers.google.com/drive/v3/web/quickstart/nodejs
+		
+Using Google Auth with Angular
+==============================
+
+	Configuration ( DOn;t Want to check this in...)
+	export const environment = {
+	  production: false,
+	  googleAPIKey: '',
+	  googleClientId: '',
+	  googleScopes: 'profile email https://www.googleapis.com/auth/drive.metadata.readonly'
+	};
+
+
+	I used this article as a template:	
+		https://developers.google.com/drive/v3/web/quickstart/js
+		
+	Instead of listening to sign-in changes I listened to user changes instead.
+	
+	Learning the API is essential....
+		
+	( Google User Object )
+	https://developers.google.com/identity/sign-in/web/reference#googleusergetid
+	( Google WebAPI Reference )
+	https://developers.google.com/identity/sign-in/web/reference
+	
+	Angular has problems with Gooogle API events 
+	--------------------------------------------
+	
+		https://stackoverflow.com/questions/42000337/angular2-ngzone-google-maps-doesnt-trigger-change-detection
+		The solution is to explictly handle the events within the an Angular Zone:
+		
+		So, in a Component ...
+		
+			import { NgZone } from '@angular/core';
+			...
+			constructor(private zone: NgZone) 
+			...
+			this.zone.run( () => {      
+				gapi.auth2.getAuthInstance().isSignedIn.listen( ( isSignedIn ) => { 
+					// Do something ....         
+				});
+			});		
+
+	Google adds it's module to the global namespace; Puth this :
+	
+		declare const gapi: any;
+		
+	...at the top as a placeholder.
+	
+	
+	TODO: Return images and display.
+	
+	TODO: Abstract out the Storage Service. A Biz Logic layer should be invoking it - not the View COntainer directly.
+
+		
+Image Upload (server-side)
+===================================================
+
+	Using multerjs
+		Caching in memory prior to saving to authenticated user's Google Drive for now. If performance is an issue I can always save to disk. However, I am unsure how Heroku will behave.
+
+	In order to write need to change scope of the Google the requested OAuth token : 
+		https://developers.google.com/drive/v3/web/about-auth
+
+Passport w/ Route Files
+=======================
+
+	The secret is that you need to INJECT the dependencies into your route.
+
+	my-route.js
+	-----------
+
+		module.exports = function(app, passport) {
+  
+    		var express = require('express');
+    		var router = express.Router();
+  
+			router.get('/login', function(req, res) {
+				// Do something.
+			});    
+
+    		router.get('/auth/google', passport.authenticate('google', { scope: [...] })
+				// Do something.
+    		);
+    
+		    return router;
+  		};
+
+	app.js
+	------
+
+		var index = require('./routes/my-route');	
+	
+		app.use(index(app,passport));
+
+		
+Serving static pages from Express / Node
+========================================
+
+	Normally everything goes through view engione ( i.e., handlbars / jade ). 
+	
+	Want to serve back Angualr Website as-is.
+	
+	Put angular website in public and serve in route like this :
+	
+		router.get('/authenticated', function(req, res) {
+    
+			res.sendFile(path.resolve('public/mypage.html'));
+			// Can also use this : express.static(path.resolve(public + '/index.html'));
+    
+		});
+
+
+Creating your own Node Modules
+==============================
+
+	This encapsulates your Module in an object to which arguments can be sent ...
+
+		my-module.js
+		------------
+
+			// TODO: Requires stuff ...
+
+			function MyModule ( args ) {    
+
+				if (!(this instanceof MyModule))
+					return new MyModule(args);
+
+				this.opts = opts;
+
+				// TODO: Initialize stuff.
+
+			}
+
+			MyModule.prototype.doSomething = function( args ) {
+			}
+			
+			module.exports = MyModule;
+
+		Usage
+		-----
+
+
+			var myModule = require('./my-module')( { args1: "hello"} );
+
+			myModule.doSomething();
+
+Data Persistance
+===================================================
+
+	Put everything into Google Drive appData. Make it flat.
+
+	Pros
+		- Data is secure and cannot be tampered with by user.
+		- User still essentially “owns” the data.
+		- Data is shareable by other “Me” apps.
+		- User won’t have to grant full access to Drive.
+
+	Cons
+		- Data is not accessible by User. Can’t do ad-how searches using file system.
+		- Cannot serve images directly from appData. 
+	
+	Drive does have a public location - but, then everything is exposed and the user can tamper with. 	
+		
+	Why not just use a DB? I want the use to OWN their data as well as be able to manipulate it with other applications.
+	
+	For now I have abstracted out the database into a module. 
+	I am not sure how I will implement it at this point. 	
+	
+
+Google Drive (v3)	
+=================
+
+   "Spaces" can be appData, Drive, or Photos.
+
+	What a POS. You cannot specify folders when searching for a file. 
+
+	You CAN search for ALL folders - and get their unique ID's. With the ID you can search for files and folders contained within it.
+
+		In addition, you CAN search for all folders and files within one of Google's pre-defined folders:  appData, Drive, or Photos - but that is as specific as it gets.
+
+	It looks like Drive stores three seperate categories as well - photos, appData, and drive (i.e., misc). I kind of would like my photos to be accessible through Drive directly.
+	
+Google Drive (v3) - Fetch Files
+===============================
+
+	Need to use unique file id - NOT the file name.
+	
+	Needs to be written to a stream. In this case it can be the response stream ( Google handles the headers ).
+	
+Modules ( and Promises )
+========================
+
+	Using Bluebird.js for promises although ES6 supposedly supports it natively.
+	
+	Broke everything into logical modules - Database, Photo Repo ( Google Drive ), and Business Logic.
+	
+	Dependencies get injected into Module from app.js.
+	
+	Asychronous functions use Bluebird.js to return promises. 
+	
+	Promises have a .then() and .catch() methods that get fired off when work is done.
+	
+	Always set a "self" variable before creating a Promise - that way you have a reference to the scope when the Promise finally returns.
+	
+Testing
+=======
+
+	Using Mocha (Framework) and Chai (Assertions). Should be added to devDependencies in package.json.
+	
+	Using before() block to ensure database is running before performing integration tests; needed to add callback to database initializer.
+	
+	Added this to Visual Studio launch.json to debug tests; Can only debig a single unit test at a time :
+	
+	        {
+            "name": "Run Unit Test",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceRoot}/webapp/node_modules/mocha/bin/_mocha",            
+            "stopOnEntry": false,
+            "args": [
+                "--no-timeouts",                
+                "${workspaceRoot}/webapp/tests/server-tests/test-database.js"           
+            ],            
+            "cwd": "${workspaceRoot}",
+            "preLaunchTask": null,
+            "runtimeExecutable": null,
+            "runtimeArgs": [
+                "--nolazy"
+            ],
+            "externalConsole": false,
+            "sourceMaps": false,
+            "outDir": null
+        },    
+	
+	Added this to "scripts" in package.json to run from terminal; C:\npm test; "Tests" is the path to the tests to recrusively run.
+	
+			"test": "node_modules/.bin/mocha tests --recursive --reporter spec"    
+	
+	
+	
+MongoDB
+=======
+
+	To start the server : mongod --dbpath=/data
+	
+				
+Questions
+=========	
+
+	1) 
+	
+		The server doesn't really do anything except slow down access to Cloud ( it is a proxy ).
+		
+		I want to store everything on Cloud anyway - so I REALLY don't want a database on the server.
+		LokiJS is an in-memory JSON database that can be used in the browser as well 
+			as across multiple platforms. So, when I migrate to a native app I should be able to leverage.
+			
+		- Is there a REST-based API for authentication and Google Drive access that I can reuse across native and 
+			web browser?
+			
+		- Might have trouble POSTing to Google Drive due to cross-domain issue.
+			
+	
+		
+		
+	1a) Write integration test for Database Layer. Implement it.	
+
+
+	2. Google Drive Tests		
+
+		- What happens when I try to overwrite a file in Drive? Is it silent?
+		- When I get a file from Drive and it doesn’t exist how do I know?
+		- Can I write multiple files at the same time?
+		- Can I get multiple files at the same time?
+
+	3. Do I want to use a real database - or, just store everything as JSON?
+
+	4. Do I want to get the data file every time the user posts? Or, cache it?
+
+	5. Write code to : POST a image, process it, save it to Drive, load it from Drive.
+
+	6. Write code to : Serving files from Google Drive for Me.
+	
+	
+Visual Studio Code
+==================
+
+	Launch.json is for running/debugging tasks.
+	
+	Task.json is for general tasks - minification, Angular transpiling.
+	
+	Can run tasks in Launch using preLaunchTask condition.
+		
+		
+Gulp
+==================
+
+	Task Runner to help with assembling project.
+	
+	Need to use to build Angular Client and deploy to Server.
+	
+	Weird situation due to project structure. Gulp exists in root and client/angualr exists in /client.
+	Needed to chaneg directory of Node process to find angualr during glup task. ALSO need to change it back 
+	while Gulp is running of the other tasks might fail as will be looking in wrong location for files.	
+		
+	
+Learnibg Angular 
+================
+
+	Angular does NOT support abstract components.
+	
+	Angualr does not like typescript properties in compoennts - the ui will no refresh if property changes.
+
+
+		Angular-cli
+		
+			When installing run as Administrator.			
+		
+			Use to build and run Angular2+ applications. 
+			
+			Can specify alternat base path for resource files ( useful when runbning on server and don't want .html and .js all in same location.
+
+				Can use : ng build --base-href /javascripts/
+
+			
+
+	<input [(ngModel)]="hero.name" placeholder="name">
+	Two-Way Binding
+
+
+
+	ng directives (yes, there are still directives )
+	<li *ngFor="let hero of heroes">
+	  <span class="badge">{{hero.id}}</span> {{hero.name}}
+	</li>
+
+	Use back tick ‘ for multiple lines in @component
+
+	@component has a style property, too. So, selector , template, and style. Style ONLY applied to component
+
+	CSS can be toggled based upon state of component.
+	[class.selected]="hero === selectedHero"
+	selected class is enabled if true.
+
+	Hooking up events:
+	<li *ngFor="let hero of heroes" (click)="onSelect(hero)">
+	  ...
+	</li>
+	OnSelect would be defined as a function in the component .ts file
+
+	Most of the development will be in component .ts files
+
+	
+	Creating a new component ...
+	
+		Components should be upper camel-case and end with Component
+		
+			HeroDetailComponent
+			hero-detail.conponent.ts
+			
+		A component should only be registered with ONE module.
+		
+			In Module ....
+			
+				import { HeroDetailComponent } from './hero-detail.component';
+				
+				declarations: [
+					AppComponent,
+					HeroDetailComponent
+				],
+		
+		The Component should look like this:
+			
+			import { Component } from '@angular/core';
+
+			@Component({
+				selector: 'hero-detail',
+			})
+
+			export class HeroDetailComponent {
+			}
+			
+
+		
+	To bind a property (hero) from a Parent Component to a Nested Component ...
+	
+		In Parent, the HTML looks like this : 
+		
+			<hero-detail [hero]="selectedHero"></hero-detail>
+			
+		In Child, 
+				
+			.. Need to import "Input" :
+		
+			import { Component, Input } from '@angular/core';
+						
+			... Need to declare the input :
+
+			@Input() hero: Hero;
+		
+	Modules
+	==============================================================
+	
+		Components must be registered in module.
+		
+		Routes must be registered in module.
+	
+	
+		Example
+		-------
+		
+			import { NgModule }       from '@angular/core';
+			import { BrowserModule }  from '@angular/platform-browser';
+			import { FormsModule }    from '@angular/forms';
+			import { RouterModule }   from '@angular/router';
+
+			import { AppComponent }        from './app.component';
+			import { HeroDetailComponent } from './hero-detail.component';
+			import { HeroesComponent }     from './heroes.component';
+			import { HeroService }         from './hero.service';
+
+			@NgModule({
+				imports: [
+					BrowserModule,
+					FormsModule,
+					RouterModule.forRoot([
+						{
+							path: 'heroes',
+							component: HeroesComponent
+						}
+					])
+				],
+				declarations: [
+					AppComponent,
+					HeroDetailComponent,
+					HeroesComponent
+				],
+				providers: [
+					HeroService
+				],
+				bootstrap: [ AppComponent ]
+			})
+			
+			export class AppModule {
+			}
+	
+	
+		AppModule
+		---------
+		
+			Declares components used in application.
+		
+			Will import additional modules required by app 
+			
+		
+		Common Modules
+		--------------
+		
+			FormsModule is required for 2-way binding.
+		
+	Services 
+	==============================================================
+	
+		- Should use promises in services.
+	
+		Naming convention
+		-----------------
+			SpecialSuperHeroService 
+			special-super-hero.service.ts
+			
+		Template [src/app/hero.service.ts] :		
+		----------------------------------
+					
+			import { Injectable } from '@angular/core';
+
+			@Injectable()
+			export class HeroService {
+				getMyStuff () : MyClass [] {
+					return [];
+				}
+			
+			}
+			
+			- Injectable allows depencies to be injected into the service.
+			
+		Usage in a Component
+		--------------------		
+			import { HeroService } from './hero.service';
+			
+			constructor(private heroService: HeroService) { }
+						
+			getHeroes(): void {
+				this.heroes = this.heroService.getHeroes();
+			}			
+						
+			providers: [HeroService]
+			
+			
+			---- Injects a singleton instance of the service into the component.
+			
+				
+	Component 
+	===============================================================
+	
+		A custom html tag that renders html, javascript, and css.
+	
+		Example
+		-------
+	
+			import { Component } from '@angular/core';
+			 
+			@Component({
+			  selector: 'my-component',
+			  template: `
+				 <h1>{{title}}</h1>
+			  `
+			})
+			export class MyComponent {
+			  title = 'My Component';
+			}	
+	
+	
+		AppComponent
+		------------
+			Is the root component of the application.
+			Should only handle navigationl routing.
+		
+		@Component section which defines :
+		----------
+		
+			selector - the tag/directive in HTML that causes the component to get injected.
+			template - the markup that gets injected.
+			style - style that gets applied to the component ONLY.	
+	
+	
+		Lifecycle Events 
+		----------------
+		
+			Good place to initialie data through service calls.
+		
+			Include onInit, onDestroy, ... and a bunch in-between.
+				
+			Example: 
+			
+				import { OnInit } from '@angular/core';
+				
+				export class AppComponent implements OnInit {
+					ngOnInit(): void {
+						// Do initialization stuff for component.
+					}
+				}
+				
+		Accessing DOM from withing a Component
+		--------------------------------------
+			
+			this.element[.nativeElement][.firstChild]
+				
+	Routing
+	====================================================================
+	
+		- Depends on module, RouterModule.
+		- Routes are stored as an array in AppModule.
+		- Route will render component to wherever 
+		
+		Configuring 
+		-----------
+		
+			index.html 
+			----------
+			
+				- Need a base href.
+				
+				<head>
+					<base href="/">
+					
+			AppModule (app.module.ts)
+			-------------------------
+			
+				- Need to import the router module.
+				- Need to declare paths.
+			
+			
+				import { RouterModule }   from '@angular/router';
+				...
+				
+				@NgModule({
+					imports: [					
+						RouterModule.forRoot(
+						[{
+							path: 'heroes',
+							component: HeroesComponent
+						}])
+					],
+				
+				...
+		
+			AppComponent (app.component.ts)
+			-------------------------------
+			
+				-- Need to declare <router-outlet>; this is where component will be rendered.
+				-- routerLink create a hyperlink to a particular route.
+				
+				template: `
+					<h1>{{title}}</h1>
+					<a routerLink="/heroes">Heroes</a>
+					<router-outlet></router-outlet>
+				`
+		
+		
+		Adding Navigation to a Template
+		-------------------------------
+		
+			In AppComponent add a routerLink; This will render the appropriate router path.
+			
+			template: `
+				<h1>{{title}}</h1>
+				<nav>
+				  <a routerLink="/dashboard">Dashboard</a>
+				  <a routerLink="/heroes">Heroes</a>
+				</nav>
+				<router-outlet></router-outlet>
+		
+		
+		Redirects
+		---------
+
+			In AppModule do this; the root will redirect to /dashboard.
+		
+			{
+			  path: '',
+			  redirectTo: '/dashboard',
+			  pathMatch: 'full'
+			},
+			
+		Securing Routes
+		---------------
+		
+			Routes can be guarded.
+		
+				
+	Classes
+	====================================================================
+	
+		Example
+		-------
+		
+			export class Hero {
+				id: number;
+				name: string;
+			}		
+		
+		Importing into a Component
+		--------------------------
+		
+			import { Hero } from './hero';	
+			
+		- One class per file. 
+		- Move classes out of components if they are going to be reused.			
+	
+				
+	Arrow Function / Syntax
+	====================================================================
+	
+		Arrow “function” can be used instead of an anonymous function. 
+		
+		Beneficial in that it does NOT create its own scope or “this” - it uses that of its parent; previously had to maintain a "self" variable to preserve scope.
+		
+								
+	Promises
+	=========
+	
+		Promise is NEW in ES2015; 
+	
+		Return a Promise
+		----------------
+
+			getHeroes(): Promise<Hero[]> {
+				return Promise.resolve(HEROES);
+			}
+
+		Return a Promise w/ arrow-syntax
+		--------------------------------
+	
+			return new Promise(resolve => {
+				setTimeout(() => resolve(this.getHeroes()), 2000);
+			});
+	
+				
+		Consume a promise
+		-----------------
+
+			getHeroes(): void {
+				this.heroService.getHeroes().then(heroes => this.heroes = heroes);
+			}
+		
+Questions
+=========
+
+	1) For development do I host database locally - or, on Heroku? 
+	
+		Heroku supports this but its atypical and the client must be SSL. This would be the Node.Js / Express server code. Honestly, it would probably just be easier to just spool up the database locally.
+
+	2) Can my client/web app target a server/api on the Heroku cloud - or is it locked down? 
+	
+		Going to run into same-origin issue if accessing a server/api running on Heroku from a client running locally. Both need to be served from the same place.
+		
+		Server-to-server will be possible as I am planning on autenticating against the server/api using Google OAuth token.
+
+	3) How do I secure my server/api so that requests are authenticated? 
+	
+		Lots of options for this. The most basic and widely supported is Basic Authentication whereas the user's credentials are encoded and submitted for every request. 
+		
+		However, I don't want to (mis)handle credentials will leverage Google Sign-In / OAuth. I am planning sending an OAuth token instead. The service / api will need to verify the token.
+
+	4) Can I serve picture from a user's Google Drive? Can I do it if the user is not authenticated / signed-in?
+	
+		Google Drive has a Public Folder in which publically accessible files can be accessed. It also has a "Application Data" folder - but I have a f
+		
+	5) Can I use Google Sign-In from my local development environment? Doesn't it require SSL?
+	
+		Nope. Google Sign-In and other OAuth providers redirect user's to a their own login form which is hosted on HTTPS. A token is returned.
+	
+	6) How do I gain access to a user's Google resources?
+
+		I think I have figured this out. It requires creating a Google oauth2Client object using the authentication token retreived by Passport.js. 
+		You can access Google API's using the object. Just make sure you specify the Google "scope" when configuring the OAuth stuff in Passport.js 
+		as the rendered token will be restricted to whatever you specify.
+	
+	7) How do I leverage the Google Sign-in token to authorize requests to my application?
+
+		This is built into Passport.js. Routes can be authenticated as follows :
+
+			app.get('/storage', ensureAuthenticated, function(req, res) {
+				// You need to be authenticated to get here.
+			});
+	
+	8) Why use Passport.js instead of Google Sign-In OAuth directly?
+
+		It's robust and it allows you to swap in/out different vendor OAuth - Google, Facebook, Twitter, etc...
+
+		It also supports a session object.
+
+		However, I am having a LOT of trouble getting the Google OAuth-2 stuff to work with it. 
+		
+	9) Do I even need server at all? Nothing is stored on it? It just acts a proxy to Google Services. 
+	
+		Yes! Keep the server api. 
+		
+			- Central API that can be used across multiple applications.
+			- Abstraction layer.
+			- Can provide caching and a REAL database.
+			- Might be useful for caching.
+			- At a future point can use a real database instead of a .json file.
+			- Central location for BLL and DAL.
+			- Might be able to use it for other applications ( Native apps ) as all you need is a token to access.
+
+
+	10) How should I fetch a Photo
+	
+			Do not use the Google Drive Photo ID. Maintain a unique id in the database.
+			
+			Clients will request photos by database id.
+			
+			Photos must be assoicated with a Entry ID.
+			
+			POSTing a photo will return a new database id.
+			
+			
+	11) Integrate Angular.
+	
+			Created Gulp script and project root. 
+			
+			Gulp script invokes angualr-cli to builds client to /dist. It then copies it over to server.
+			
+			Gulp script can be leveraged for client and server tasks.
+
+

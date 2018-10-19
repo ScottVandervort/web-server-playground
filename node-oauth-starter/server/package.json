@@ -1,0 +1,27 @@
+{
+  "name": "server",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "test": "node_modules/.bin/mocha tests --recursive --reporter spec"
+  },
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "body-parser": "~1.17.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.3",
+    "express": "~4.15.2",
+    "express-session": "^1.11.2",
+    "googleapis": "^22.2.0",
+    "hbs": "~4.0.1",
+    "morgan": "~1.8.1",
+    "passport": "^0.2.1",
+    "passport-google-oauth": "^0.2.0",
+    "serve-favicon": "~2.4.2"
+  },
+  "devDependencies": {
+    "chai": "*",
+    "mocha": "*"
+  }
+}
