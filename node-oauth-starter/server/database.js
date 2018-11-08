@@ -29,7 +29,7 @@ function Database (opts) {
 }
 
 // Inserts a record and returns a database key.
-Database.prototype.insert = function ( userId, entryId, photoRepoId, date, title, text ) {
+Database.prototype.insert = function ( userId, date, title, text ) {
 
     var self = this;
 
@@ -38,7 +38,7 @@ Database.prototype.insert = function ( userId, entryId, photoRepoId, date, title
         var collection = self.db.collection('documents');
             
         collection.insertMany([
-            { "userId" : userId, "entryId" : entryId, "photoRepoId" : photoRepoId, "date" : date, "title" : title, "text" : text }], 
+            { "userId" : userId, "date" : date, "title" : title, "text" : text }], 
             function(err, result) {
                 try {
                     Assert.equal(err, null);
@@ -54,21 +54,41 @@ Database.prototype.insert = function ( userId, entryId, photoRepoId, date, title
     });    
 };
 
-Database.prototype.getDetail = function ( id ) {};
+// Returns all records for the user.
+Database.prototype.getEntries = function ( userId ) {
 
-Database.prototype.getRepoIdForPhoto = function ( userId, photoId ) {
+    var self = this;
+
     return new Promise (function(resolve,reject) {
-        // TODO : Implement DB; Return Photo Repository Id for Photo Id.
-        resolve(photoId);
-    });
-}
+            
+        var collection = self.db.collection('documents');
 
-Database.prototype.getSummary = function ( date ) {};
+        var query = { "userId": userId };
 
-Database.prototype.update = function ( id, userId, entryId, googlePhotoId, date, title, text ) {};
+        collection.find(query).toArray(function(err, result) {
 
-Database.prototype.delete = function ( id, userId ) {};
-    
+            try {
+                Assert.equal(err, null);                            
+
+                let response = [];
+
+                if (result.length > 0) {
+                    response = result.map( function( entry ) {
+                                            return  {   "date" : entry.date, 
+                                                        "text" : entry.text, 
+                                                        "title" : entry.title};
+                    })                
+                }
+
+                resolve(response);
+            }
+            catch (ex) {
+                reject(ex);                
+            }  
+        });
+    });    
+};
+
 module.exports = Database;
 
 

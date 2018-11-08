@@ -20,9 +20,11 @@ module.exports = function(config,businessLogic) {
       
   router.get('/data', ensureAuthenticated, function ( req, res, next ) {
 
-    businessLogic.getEntries()
+    businessLogic.getEntries(
+      req.user.profile.id
+    )
     .then(function( entries ) {
-      res.json({ "entries" :  true });          
+      res.json(entries);          
     })
     .catch(function(err) {
         res.render('error', { message: "Error", error : { status: "500" } } );                  
